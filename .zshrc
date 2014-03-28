@@ -77,6 +77,14 @@ elif [[ "$OS" == "Linux" ]]; then
     alias ll="ls -alhF --color"
 fi
 
+# Docker helpers
+docker-purge-containers () {
+    docker rm $(docker ps -a -q)
+}
+docker-purge-images () {
+    docker rmi $(docker images | grep '^<none>' | awk '{print $3}')
+}
+
 # load local config
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
