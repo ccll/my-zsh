@@ -84,6 +84,9 @@ docker-purge-containers () {
 docker-purge-images () {
     docker rmi $(docker images | grep '^<none>' | awk '{print $3}')
 }
+docker-rm-container () {
+    docker kill $1 && docker rm $1
+}
 
 # load local config
 if [ -f ~/.zshrc.local ]; then
