@@ -12,11 +12,14 @@ elif [[ "$OS" == "Linux" ]]; then
 fi
 
 # Docker helpers
-docker-purge-containers () {
-    docker rm $(docker ps -a -q)
+docker-rename-image () {
+    docker tag $1 $2 && docker rmi $1
 }
 docker-purge-images () {
     docker rmi $(docker images | grep '^<none>' | awk '{print $3}')
+}
+docker-purge-containers () {
+    docker rm $(docker ps -a -q)
 }
 docker-rm-container () {
     docker kill $1 && docker rm $1
