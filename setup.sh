@@ -1,3 +1,3 @@
 #!/bin/sh
-cd ~
-ln -f -s ~/my-zsh/.zshrc
+cd "${ZSH_CUSTOM}"
+ln -f -s ~/my-zsh/my.zsh
