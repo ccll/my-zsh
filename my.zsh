@@ -10,6 +10,7 @@ elif [[ "$OS" == "Linux" ]]; then
     alias ls="ls -aF --color"
     alias ll="ls -alhF --color"
 fi
+alias em="emacs"
 
 # Docker helpers
 docker-rename-image () {
