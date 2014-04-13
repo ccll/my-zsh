@@ -25,6 +25,9 @@ docker-purge-containers () {
 docker-rm-container () {
     docker kill $1 && docker rm $1
 }
+docker-ssh () {
+    ssh -i ~/dockerfiles/initimage/initimage-key root@$(docker inspect $1 | grep IPAddress | cut -d '"' -f 4)
+}
 
 # load local config
 if [ -f ~/.zshrc.local ]; then
