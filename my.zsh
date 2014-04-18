@@ -4,11 +4,13 @@ plugins=(git brew virtualenv bower cabal common-aliases node npm per-directory-h
 # alias
 OS=`uname`
 if [[ "$OS" == "Darwin" ]]; then
-    alias ls="ls -aFG"
-    alias ll="ls -alhFG"
+    #alias ls="ls -aFG"
+    #alias ll="ls -alhFG"
+    alias ls="gls -aF --color=auto --group-directories-first"
+    alias ll="gls -alhF --color=auto --group-directories-first"
 elif [[ "$OS" == "Linux" ]]; then
-    alias ls="ls -aF --color"
-    alias ll="ls -alhF --color"
+    alias ls="ls -aF --color=auto --group-directories-first"
+    alias ll="ls -alhF --color=auto --group-directories-first"
 fi
 alias em="emacs"
 
