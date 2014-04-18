@@ -21,6 +21,15 @@ docker-rename-image () {
 docker-purge-images () {
     docker rmi $(docker images | grep '^<none>' | awk '{print $3}')
 }
+docker-tag-latest () {
+    local image=$(echo $1 | awk -F ':' '{print $1}')
+    local tag=$(echo $1 | awk -F ':' '{print $2}')
+    if [[ "$tag" == "" ]]; then
+        echo "Error: missing tag!"
+        return
+    fi
+    docker tag $1 $image\:latest
+}
 docker-purge-containers () {
     docker rm $(docker ps -a -q)
 }
